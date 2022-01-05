@@ -7,7 +7,7 @@
   "logo": "https://res.cloudinary.com/dijjqfsto/image/upload/v1621666671/linkin_logo_1_jcuvr3.png",
   "repository": {
     "type": "git",
-    "url": "https://github.com/RizkyRajitha/linkin.git"
+    "url": "https://github.com/pronvd7/linkin.git"
   },
   "scripts": {
     "dev": "next dev",
