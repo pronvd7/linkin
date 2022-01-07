@@ -52,8 +52,10 @@ export default function Home({
       <div className="outterwrap">
         <div className="wrap">
           <div className="profile">
+            <div className="avatar-pic">
             {!isEmpty(avatarUrl) && <img src={avatarUrl} className="photo" />}
             {isEmpty(avatarUrl) && <img src="/avatar.png" className="photo" />}
+            </div>
             <span className="handlerText">
               <a
                 className="handlerLink"
@@ -207,12 +209,24 @@ export default function Home({
         }
 
         .photo {
-          border-radius: 50%;
-          width: ${avatarwidth}%;
-          padding: 4px;
-          background: ${avatarBorderColor};
+          width:  ${avatarwidth}%;
         }
 
+        .avatar-pic {
+          position: relative;
+          width: 200px;
+          height: 200px;
+          margin: 20px auto;
+          border: 1px solid #000;
+          border-radius: 50%;
+          padding: 20px;
+          background: #000;
+          box-shadow: 0px 0px 13px 0px #000; 
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+      
         .handlerText {
           padding: 10px;
           font-weight: bold;
