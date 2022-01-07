@@ -57,11 +57,11 @@ const Admin = ({ pageDataSS, linkDataSS, socialDataSS }) => {
     <>
       <Head>
         {" "}
-        <title> {`Linkin Dashboard`}</title>
+        <title> {`Luxury Dashboard`}</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        <meta name="og:description" content={`Linkin Dashboard`} />
-        <meta name="og:site_name" content="Linkin" />
-        <meta name="og:title" content={`Linkin Dashboard`} />
+        <meta name="og:description" content={`Luxury Dashboard`} />
+        <meta name="og:site_name" content="Luxury" />
+        <meta name="og:title" content={`Luxury Dashboard`} />
       </Head>
       <div className="d-flex dashboardwrapepr">
         <Formwrapper pageData={pageData} updatedPageData={updatedPageData} />

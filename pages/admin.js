@@ -70,7 +70,7 @@ const Admin = ({}) => {
   return (
     <>
       <Head>
-        <title>Admin Login</title>
+        <title>User Login</title>
       </Head>
       <div className="d-flex">
         {" "}

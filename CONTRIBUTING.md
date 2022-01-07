@@ -1,15 +1,3 @@
-# Contributing
-
-Welcome to Linkin contribution guidelines. Linkin highly appreciates your support making it better in any order of magnitude.
-
-## Code of Conduct
-
-Help us keep Linkin open and inclusive. Please read and follow our [Code of Conduct](/CODE_OF_CONDUCT.md).
-
-## Community
-
-If you any clarifications or any feedback on Linkin please reach on discord https://discord.gg/Jsmc5Dm9wg
-
 ## Linkin Build with
 
 - [Next.Js](https://nextjs.org/)
@@ -17,7 +5,6 @@ If you any clarifications or any feedback on Linkin please reach on discord http
 - [Prisma](https://www.prisma.io/)
 - [Bootstrap](https://getbootstrap.com/)
 
-## Developing locally
 
 #### Requirements
 
@@ -27,7 +14,7 @@ If you any clarifications or any feedback on Linkin please reach on discord http
 #### Clone and install dependencies
 
 ```bash
-git clone https://github.com/RizkyRajitha/linkin.git
+git clone https://github.com/pronvd7/linkin.git
 cd linkin
 npm i
 ```
@@ -67,17 +54,6 @@ npm run seed
 npm run dev
 ```
 
-## Branching Strategy
-
-Linkin has 2 main branches
-
-1. [master](https://github.com/RizkyRajitha/linkin/tree/master) branch - will have the code from the latest release. only updates on a release.
-2. [dev](https://github.com/RizkyRajitha/linkin/tree/dev) branch - all the development carries out in this branch. the latest code will be available in this branch, **all the pull requests should be made to dev branch** since prs could be tested and modified for the final release phase.
-   other than the above branches there can feature specific branches for the continence.
-
-## Making pull request
-
-when making a pull request please create your feature branch using the **[dev](https://github.com/RizkyRajitha/linkin/tree/dev)** branch (`checkout using dev branch`), and develop in it locally. avoid installing additional dependencies unless clarified through a maintainer. make the pr to the **[dev](https://github.com/RizkyRajitha/linkin/tree/dev)** branch.
 
 ## File Structure
 

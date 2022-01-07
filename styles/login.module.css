@@ -27,8 +27,9 @@ html,
 .App,
 #root,*/
 .authWrapper {
+  background-image: url("https://luxurytravelhackers.com/wp-content/uploads/2021/10/Screen-Shot-2020-05-23-at-2.48.14-PM.jpg");
   width: 100%;
-  background: #1c8ef9 !important;
+  /*background: #140106 !important; */
   min-height: 100vh;
   display: flex;
   font-weight: 400;

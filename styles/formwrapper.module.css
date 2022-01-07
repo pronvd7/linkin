@@ -6,16 +6,30 @@
   /* background: #1c8ef9 !important; */
   overflow-y: scroll;
 }
-
+.container{
+  margin-top: 10px;
+}
 .logoutbtn {
   margin: 10px;
 }
-
+.main_row {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  display: -ms-flexbox;
+  background-color: #caa67e1f;
+}
+.header__logo {
+  width: 380px;
+}
 .buttongroupbg {
   background-color: #fff;
 }
 @media (max-width: 768px) {
   .dashform {
     width: 100vw;
+  }
+  .main_row {
+    display: table;
   }
 }

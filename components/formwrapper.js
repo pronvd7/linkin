@@ -11,6 +11,7 @@ import FontForm from "./fontform";
 import FooterForm from "./footerform";
 import PasswordChangeForm from "./passwordchangeform";
 
+
 const PUBLICURL = process.env.NEXT_PUBLIC_VERCEL_URL
   ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
   : "http://localhost:3000";
@@ -95,12 +96,11 @@ function Formwrapper({ pageData, updatedPageData }) {
   return (
     <>
       <div className={styles.dashform}>
-        <div className="d-flex justify-content-end mb-4">
-          {version !== "" && (
-            <div className="d-flex justify-content-start align-items-center flex-grow-1 ms-2 mt-2 ">
-              <span>{`v ${version}`}</span>
-            </div>
-          )}
+        <div className={styles.main_row}>
+        <div className="col-md-6 ">
+              <img className={`header__logo ${styles.header__logo}`} src="/images/logo.png" alt="Luxery Travel logo"/>
+        </div> 
+        <div className="col-md-6">
           <button
             className={`btn btn-outline-primary logout-btn ${
               styles.logoutbtn
@@ -125,8 +125,8 @@ function Formwrapper({ pageData, updatedPageData }) {
             logout
           </button>
         </div>
-
-        <div className="container">
+       </div>
+        <div className={`container ${styles.container}`}>
           <div className="container d-flex justify-content-center">
             <div
               className="btn-group"

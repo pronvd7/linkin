@@ -37,36 +37,36 @@ async function seed() {
     await Prisma.pagedata.create({
       data: {
         id: 1,
-        handlerText: "LinkIn",
+        handlerText: "Luxury Travel Hackers",
         avatarUrl:
-          "https://res.cloudinary.com/dijjqfsto/image/upload/v1621666671/linkin_logo_1_jcuvr3.png",
+          "https://luxurytravelhackers.com/wp-content/uploads/2020/04/Logo_LTH-09-copy-1-300x286.png",
         avatarBorderColor: "#ffffff",
-        bgColor: "#7ea2ff",
+        bgColor: "#cca567",
         accentColor: "#bdd7ff",
         handlerFontSize: "20",
         handlerFontColor: "#ffffff",
         avatarwidth: "50",
-        footerBgColor: "#7ea2ff",
+        footerBgColor: "#000000ad",
         footerTextSize: "12",
-        footerText: "Powered by Linkin",
+        footerText: "Powered by Luxury Travel Hackers",
         footerTextColor: "#ffffff",
         handlerDescription:
-          "Linkin is a customizable self hosted link tree platform",
+          "The number one luxury travel booking platform",
         handlerDescriptionFontColor: "#ffffff",
         linktreeWidth: "320",
         linkdata: {
           create: {
             bgColor: "#2C6BED",
             textColor: "#ffffff",
-            displayText: "Welcome to Linkin",
+            displayText: "Welcome to Luxury Travel Hackers",
             iconClass: "fas fa-link",
-            linkUrl: "https://github.com/RizkyRajitha/linkin",
+            linkUrl: "",
           },
         },
         socialdata: {
           create: {
             iconClass: "fab fa-github",
-            linkUrl: "https://github.com/RizkyRajitha/linkin",
+            linkUrl: "",
             bgColor: "#2C6BED",
             borderRadius: "5",
           },

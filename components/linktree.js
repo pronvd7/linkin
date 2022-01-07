@@ -36,15 +36,15 @@ export default function Home({
   avatarBorderColor = isEmpty(avatarBorderColor) ? "#fff" : avatarBorderColor;
   handlerFontSize = isEmpty(handlerFontSize) ? "15" : handlerFontSize;
   handlerFontColor = isEmpty(handlerFontColor) ? "#fff" : handlerFontColor;
-  bgColor = isEmpty(bgColor) ? "#fff" : bgColor;
+  bgColor = isEmpty(bgColor) ? "#f9f4ef" : "#f9f4ef";
   fontFamily = isEmpty(fontFamily) ? "'Roboto', sans-serif" : fontFamily;
   fontUrl = isEmpty(fontUrl)
     ? "https://fonts.googleapis.com/css2?family=Roboto&display=swap"
     : fontUrl;
   footerTextSize = isEmpty(footerTextSize) ? 12 : footerTextSize;
-  footerBgColor = isEmpty(footerBgColor) ? "" : footerBgColor;
+  footerBgColor = isEmpty(footerBgColor) ? "#000000ad" : footerBgColor;
   footerTextColor = isEmpty(footerTextColor) ? "#ffffff" : footerTextColor;
-  linkPadding = isEmpty(linkPadding) ? "2em" : `${linkPadding}em`;
+  linkPadding = isEmpty(linkPadding) ? "1em" : `${linkPadding}em`;
   linktreeWidth = isEmpty(linktreeWidth) ? "320px" : `${linktreeWidth}px`;
 
   return (
@@ -53,6 +53,7 @@ export default function Home({
         <div className="wrap">
           <div className="profile">
             {!isEmpty(avatarUrl) && <img src={avatarUrl} className="photo" />}
+            {isEmpty(avatarUrl) && <img src="/avatar.png" className="photo" />}
             <span className="handlerText">
               <a
                 className="handlerLink"
