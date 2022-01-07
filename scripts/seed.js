@@ -44,7 +44,7 @@ async function seed() {
         bgColor: "#cca567",
         accentColor: "#bdd7ff",
         handlerFontSize: "20",
-        handlerFontColor: "#ffffff",
+        handlerFontColor: "#262621",
         avatarwidth: "50",
         footerBgColor: "#000000ad",
         footerTextSize: "12",
@@ -52,7 +52,7 @@ async function seed() {
         footerTextColor: "#ffffff",
         handlerDescription:
           "The number one luxury travel booking platform",
-        handlerDescriptionFontColor: "#ffffff",
+        handlerDescriptionFontColor: "#262621",
         linktreeWidth: "320",
         linkdata: {
           create: {
