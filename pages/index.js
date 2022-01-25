@@ -1,5 +1,5 @@
 import Head from "next/head";
-import LinkinTheBioPage from "../components/linktree";
+import Main from "../components/main";
 import { getPageDatawLinkAndSocialData } from "../lib/dbfuncprisma";
 
 export async function getServerSideProps() {
@@ -25,25 +25,21 @@ export default function Home({ pageData, linkData, socialData }) {
   return (
     <>
       <Head>
-        <title> {`${pageData.handlerText}'s Link tree Page`}</title>
+        <title> Travel Hackers | Leisure Travel Services</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta
           name="og:description"
-          content={`${pageData.handlerText}'s Link tree Page`}
+          content="Welcome to the luxury travel hacking club! Round up some friends, choose a destination, make a plan - we&#039;ve got you covered from there. We offer guided excursions by renowned experts in destinations worldwide."
         />
-        <meta name="og:site_name" content={pageData.handlerText} />
+        <meta name="og:site_name" content="Luxury Travel Hackers" />
         <meta
           name="og:title"
-          content={`${pageData.handlerText}'s Link tree Page`}
+          content="Travel Hackers | Leisure Travel Services"
         />
-        <meta name="og:image" content={pageData.avatarUrl} />
+        <meta name="og:image" content="https://luxurytravelhackers.com/wp-content/uploads/2020/04/Screen-Shot-2020-04-22-at-8.57.28-AM-1024x539.png" />
       </Head>
 
-      <LinkinTheBioPage
-        {...pageData}
-        linkData={linkData}
-        socialData={socialData}
-      />
+      <Main/>
     </>
   );
 }
