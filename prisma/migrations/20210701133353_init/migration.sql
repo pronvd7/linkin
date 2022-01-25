@@ -12,8 +12,8 @@ CREATE TABLE "linkdata" (
     PRIMARY KEY ("id")
 );
 
--- CreateTable
-CREATE TABLE "pagedata" (
+-- CreateTable 
+CREATE TABLE "pagedata" ( 
     "id" SERIAL NOT NULL,
     "username" VARCHAR(255) NOT NULL,
     "avatarUrl" VARCHAR,
