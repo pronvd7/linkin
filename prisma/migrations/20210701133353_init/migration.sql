@@ -40,6 +40,7 @@ CREATE TABLE "users" (
     "username" VARCHAR(255) NOT NULL,
     "password" VARCHAR(60) NOT NULL,
     "created_at" TIMESTAMPTZ(6) DEFAULT CURRENT_TIMESTAMP,
+    "updated_at" TIMESTAMPTZ(6) DEFAULT CURRENT_TIMESTAMP,
 
     PRIMARY KEY ("id")
 );
