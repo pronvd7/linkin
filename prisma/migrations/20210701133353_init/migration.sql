@@ -15,6 +15,7 @@ CREATE TABLE "linkdata" (
 -- CreateTable
 CREATE TABLE "pagedata" (
     "id" INTEGER NOT NULL,
+    "username" VARCHAR(255) NOT NULL,
     "avatarUrl" VARCHAR,
     "avatarheight" VARCHAR,
     "avatarwidth" VARCHAR,
@@ -50,3 +51,5 @@ CREATE UNIQUE INDEX "users.username_unique" ON "users"("username");
 
 -- AddForeignKey
 ALTER TABLE "linkdata" ADD FOREIGN KEY ("pagedataid") REFERENCES "pagedata"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+-- AddForeignKey
+ALTER TABLE "pagedata" ADD FOREIGN KEY ("username") REFERENCES "users"("username") ON DELETE SET NULL ON UPDATE CASCADE;
