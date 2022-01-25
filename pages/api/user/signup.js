@@ -13,13 +13,13 @@ export default async function handler(req, res) {
     const salt = await bcrypt.genSalt(10);
     req.body.password = await bcrypt.hash(req.body.password, salt);
    
-    let data = await createUser(req.body);
-    if (!data) {
-      res.status(401).json({ success: false, message: "invalid_credential" });
+    let response = await createUser(req.body);
+    if (!response.success) {
+      res.status(401).json({ success: false, message: response.data });
       return;
     }
 
-    let token = createSecureToken({ username: data.username });
+    let token = createSecureToken({ username: response.data.username });
 
     const cookie = serialize("linkin.auth", token, {
       path: "/",
