@@ -16,7 +16,7 @@ const PUBLICURL = process.env.NEXT_HOME_URL
   ? `https://${process.env.NEXT_HOME_URL}`
   : "http://localhost:3000";
 
-const version = process.env.NEXT_PUBLIC_VERSION || "";
+const version = process.env.NEXT_PUBLIC_VERSION || "";  
 
 const endpoint =
   process.env.NODE_ENV === "production" ? `` : "http://localhost:3000";
