@@ -4,6 +4,8 @@ import { useRouter } from "next/router";
 import styles from "../styles/login.module.css";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as Yup from 'yup';
 import { cookieValidateLogin } from "../middleware/middleware";
 import Alert from "../components/alert";
 const endpoint =
@@ -24,11 +26,22 @@ const Signup = ({}) => {
   const [showAlert, setshowAlert] = useState({ msg: "", type: "danger" });
   const [loading, setloading] = useState(false);
 
+  const validationSchema  = Yup.object().shape({
+    username: Yup.string()
+            .required('Username is required')
+            .min(6, 'Password must be at least 6 characters'),
+    email: Yup.string().email('Must be valid email!').required('Email is required'),
+    password: Yup.string()
+    .required('Password is required')
+    .min(6, 'Password must be at least 6 characters'),
+   });
+  
+  const formOptions = { resolver: yupResolver(validationSchema) };
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm(formOptions);
 
   const signup = async (data) => {
     setloading(true);

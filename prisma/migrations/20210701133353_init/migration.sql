@@ -14,7 +14,7 @@ CREATE TABLE "linkdata" (
 
 -- CreateTable
 CREATE TABLE "pagedata" (
-    "id" INTEGER NOT NULL,
+    "id" SERIAL NOT NULL,
     "username" VARCHAR(255) NOT NULL,
     "avatarUrl" VARCHAR,
     "avatarheight" VARCHAR,
