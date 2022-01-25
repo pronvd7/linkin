@@ -16,7 +16,7 @@
   "scripts": {
     "dev": "next dev",
     "start": "next start",
-    "build": "npm-run-all prismamigrateprod prismagenerate seed build-next",
+    "build": "npm-run-all prismamigrateprod prismagenerate build-next",
     "prismagenerate": "prisma generate",
     "prismamigrateprod": "prisma migrate deploy",
     "herokustart": "next start -p $PORT",
