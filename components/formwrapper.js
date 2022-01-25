@@ -12,7 +12,7 @@ import FooterForm from "./footerform";
 import PasswordChangeForm from "./passwordchangeform";
 
 
-const PUBLICURL = process.env.NEXT_HOME_URL
+const PUBLICURL = process.env.NEXT_HOME_URL 
   ? `https://${process.env.NEXT_HOME_URL}`
   : "http://localhost:3000";
 
