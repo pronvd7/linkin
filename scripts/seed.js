@@ -3,7 +3,7 @@ const path = require("path");
 // load dotenv if not in production environment
 if (process.env.NODE_ENV !== "production") {
   require("dotenv").config({
-    path: path.join(__dirname, "../", ".env"),
+    path: path.join(__dirname, "../", ".env.local"),
   });
 }
 
@@ -29,6 +29,8 @@ async function seed() {
     await Prisma.users.create({
       data: {
         username: "admin",
+        email: "admin@gmail.com",
+        isAdmin: true,
         password:
           "$2b$10$gKoU.xdV9vrGY2wEW0KAnuBmQeYxOUgXRHS9f8Sgx40m7kxpejddG",
       },
@@ -37,6 +39,7 @@ async function seed() {
     await Prisma.pagedata.create({
       data: {
         id: 1,
+        username: "admin",
         handlerText: "Luxury Travel Hackers",
         avatarUrl:
           "https://luxurytravelhackers.com/wp-content/uploads/2020/04/Logo_LTH-09-copy-1-300x286.png",

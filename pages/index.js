@@ -6,7 +6,7 @@ export async function getServerSideProps() {
   let data;
   // console.log(process.env.NODE_ENV);
   try {
-    data = await getPageDatawLinkAndSocialData(false);
+    data = await getPageDatawLinkAndSocialData();
     // console.log(data);
   } catch (error) {
     console.log(error.message);

@@ -13,7 +13,7 @@ async function handler(req, res) {
 
     await updateSocialLink(req.body);
 
-    let updatedSocialData = await getSocialData();
+    let updatedSocialData = await getSocialData(req.body.pagedataid);
 
     // mock loading times for testing
     // await new Promise((resolve, reject) =>

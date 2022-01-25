@@ -4,12 +4,14 @@ import { useForm } from "react-hook-form";
 import styles from "../styles/form.module.css";
 
 const ColorForm = ({ data, update, loading }) => {
+ 
   const [isGradeints, setisGradeints] = useState(false);
   const [colorWiseGradeints, setcolorWiseGradeints] = useState({});
 
   useEffect(() => {
     //create an object to store color state of each input (gradient or normal(hex))
     let colorWiseGradientState = {
+      id: data.id,
       bgColor: data.bgColor,
       accentColor: data.accentColor,
       handlerFontColor: data.handlerFontColor,
@@ -26,6 +28,7 @@ const ColorForm = ({ data, update, loading }) => {
         setisGradeints(true);
       } else {
         colorWiseGradientState[key] = false;
+        setisGradeints(false);
       }
     }
     setcolorWiseGradeints(colorWiseGradientState);
@@ -34,6 +37,7 @@ const ColorForm = ({ data, update, loading }) => {
   // reset the form when the gradeint switch state change
   useEffect(() => {
     reset({
+      id: data.id,
       bgColor: data.bgColor,
       accentColor: data.accentColor,
       handlerFontColor: data.handlerFontColor,
@@ -46,6 +50,7 @@ const ColorForm = ({ data, update, loading }) => {
 
   const { register, handleSubmit, reset } = useForm({
     defaultValues: {
+      id: data.id,
       bgColor: data.bgColor,
       accentColor: data.accentColor,
       handlerFontColor: data.handlerFontColor,

@@ -88,3 +88,6 @@ html,
   border-top: 1px solid #d0cbcb;
   padding-top: 10px;
 }
+.class__signup {
+  float: right;
+}

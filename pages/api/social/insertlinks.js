@@ -10,11 +10,10 @@ async function handler(req, res) {
   try {
     // Run the middleware
     await use(req, res, jwtAuth);
-    // console.log(req.body);
-
+   
     await insertSocialLinks(req.body);
 
-    let updatedSocialData = await getSocialData();
+    let updatedSocialData = await getSocialData(req.body.pagedataid);
 
     // mock loading times for testing
     // await new Promise((resolve, reject) =>

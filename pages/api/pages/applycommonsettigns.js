@@ -10,10 +10,10 @@ async function handler(req, res) {
   try {
     // Run the middleware
     await use(req, res, jwtAuth);
-
+    
     await updateCommonData(req.body);
-
-    let updatedLinkData = await getLinkData();
+    
+    let updatedLinkData = await getLinkData(req.body.pagedataid);
 
     res.json({ success: true, updatedLinkData: updatedLinkData.linkData });
   } catch (error) {

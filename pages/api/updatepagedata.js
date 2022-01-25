@@ -13,11 +13,8 @@ async function handler(req, res) {
     await use(req, res, jwtAuth);
     // console.log(req.body);
 
-    await updatePageData(req.body);
-    let updatedPageData = await getPageData();
-
-    // console.log(updatedPageData);
-    res.json({ success: true, updatedPageData: updatedPageData.pageData });
+    let updatedPageData = await updatePageData(req.body);
+    res.json({ success: true, updatedPageData: updatedPageData });
   } catch (error) {
     console.log(error.message);
     res.status(500).json({ success: false, message: error.message });

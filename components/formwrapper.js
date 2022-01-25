@@ -12,8 +12,8 @@ import FooterForm from "./footerform";
 import PasswordChangeForm from "./passwordchangeform";
 
 
-const PUBLICURL = process.env.NEXT_PUBLIC_VERCEL_URL
-  ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
+const PUBLICURL = process.env.NEXT_HOME_URL
+  ? `https://${process.env.NEXT_HOME_URL}`
   : "http://localhost:3000";
 
 const version = process.env.NEXT_PUBLIC_VERSION || "";
@@ -22,6 +22,7 @@ const endpoint =
   process.env.NODE_ENV === "production" ? `` : "http://localhost:3000";
 
 function Formwrapper({ pageData, updatedPageData }) {
+  const bioLinkurl = `${PUBLICURL}/linkin/${pageData.username}`;
   const router = useRouter();
 
   const [activeForm, setactiveForm] = useState(
@@ -46,7 +47,7 @@ function Formwrapper({ pageData, updatedPageData }) {
         body: JSON.stringify(data),
         headers: { "Content-Type": "application/json" },
       }).then((res) => res.json());
-
+ 
       if (!res.success) {
         if (res.message === "invalid_credential") {
           toast.error(`User creadentials are not valid`, {
@@ -64,7 +65,7 @@ function Formwrapper({ pageData, updatedPageData }) {
       toast.success(`Successfully update page`, {
         autoClose: 1000,
       });
-
+    
       updatedPageData(res.updatedPageData);
     } catch (error) {
       console.log(error);
@@ -113,7 +114,7 @@ function Formwrapper({ pageData, updatedPageData }) {
           </button>
           <a
             className={`btn btn-outline-primary logout-btn ${styles.logoutbtn}`}
-            href={`${PUBLICURL}`}
+            href={bioLinkurl}
             target="_blank"
           >
             visit

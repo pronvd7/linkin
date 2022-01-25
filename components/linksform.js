@@ -224,11 +224,11 @@ const LinksForm = ({ pagedataid }) => {
     }
 
     setloading(true);
-
+    let payload = {data : data, pagedataid: pagedataid};
     try {
       let res = await fetch(`${endpoint}/api/pages/applycommonsettigns`, {
         method: "POST",
-        body: JSON.stringify(data),
+        body: JSON.stringify(payload),
         headers: { "Content-Type": "application/json" },
       }).then((res) => res.json());
 

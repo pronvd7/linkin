@@ -72,7 +72,7 @@ export function cookieValidate(req, res) {
     return new Error("cookie invalid");
   }
 
-  return true;
+  return decodedToken;
 }
 
 export function cookieValidateLogin(req, res) {
@@ -90,5 +90,15 @@ export function cookieValidateLogin(req, res) {
     // res.setHeader("location", "/dashboard");
     // res.statusCode = 302;
     res.end();
+  }
+}
+
+export function getLoggedInUser(req, res) {
+  let cookie = req.headers?.cookie;
+  let token = parse(cookie)["linkin.auth"];
+  let decodedToken = parseSecureToken(token);
+  
+  if (decodedToken) {
+    return decodedToken;
   }
 }

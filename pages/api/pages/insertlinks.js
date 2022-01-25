@@ -14,7 +14,7 @@ async function handler(req, res) {
 
     await insertPageLinks(req.body);
 
-    let updatedLinkData = await getLinkData();
+    let updatedLinkData = await getLinkData(req.body.pagedataid);
 
     // mock loading times for testing
     // await new Promise((resolve, reject) =>

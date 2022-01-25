@@ -1,11 +1,13 @@
 -- CREATE TABLE IF NOT EXISTS  "users" (
 --     "id" serial primary key,
 --     "username" varchar(255) unique not null,
+--     "email" varchar(255) unique not null, 
+--     "isAdmin" boolean DEFAULT false,     
 --     "password" varchar(60) not null,
 --     "created_at" timestamp with time zone default current_timestamp
 -- );
 
-insert into users (username, password) values ('admin', '$2b$10$gKoU.xdV9vrGY2wEW0KAnuBmQeYxOUgXRHS9f8Sgx40m7kxpejddG') ON CONFLICT (username) DO NOTHING;
+insert into users (username, email, isAdmin, password) values ('admin', 'admin@gmail.com', 'true', '$2b$10$gKoU.xdV9vrGY2wEW0KAnuBmQeYxOUgXRHS9f8Sgx40m7kxpejddG') ON CONFLICT (username) DO NOTHING;
 
 
 -- CREATE TABLE IF NOT EXISTS  "pagedata" (
@@ -27,7 +29,7 @@ insert into users (username, password) values ('admin', '$2b$10$gKoU.xdV9vrGY2wE
 --     "created_at" timestamp with time zone default current_timestamp
 -- );
 
-insert into pagedata ("id", "handlerText" , "avatarUrl" , "bgColor" , "accentColor" , "handlerFontSize" , "handlerFontColor" , "avatarwidth") values (1 , 'LinkIn' , 'https://res.cloudinary.com/dijjqfsto/image/upload/v1621666671/linkin_logo_1_jcuvr3.png' , '#7ea2ff',	'#bdd7ff' , '20' , '#ffffff' , '50' ) ON CONFLICT (id) DO NOTHING;
+insert into pagedata ("id", "username", "handlerText" , "avatarUrl" , "bgColor" , "accentColor" , "handlerFontSize" , "handlerFontColor" , "avatarwidth") values (1 , 'admin', 'LinkIn' , 'https://res.cloudinary.com/dijjqfsto/image/upload/v1621666671/linkin_logo_1_jcuvr3.png' , '#7ea2ff',	'#bdd7ff' , '20' , '#ffffff' , '50' ) ON CONFLICT (id) DO NOTHING;
 
 -- 1	https://res.cloudinary.com/dijjqfsto/image/upload/v1621666671/linkin_logo_1_jcuvr3.png				LinkIn					#ffffff	true	font-family: 'Poppins', sans-serif;	https://fonts.googleapis.com/css2?family=Poppins&display=swap	2021-05-21 19:11:06
 

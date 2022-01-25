@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Head from "next/head";
 
 import { getPageDatawLinkAndSocialData } from "../lib/dbfuncprisma";
-import { cookieValidate } from "../middleware/middleware";
+import { cookieValidate, getLoggedInUser } from "../middleware/middleware";
 import Home from "../components/linktree";
 import Formwrapper from "../components/formwrapper";
 import { useStateValue } from "../components/context/state";
@@ -12,7 +12,8 @@ export async function getServerSideProps({ req, res }) {
     let valid = cookieValidate(req, res);
     let data;
     if (valid) {
-      data = await getPageDatawLinkAndSocialData();
+      let user = getLoggedInUser(req, res);
+      data = await getPageDatawLinkAndSocialData(user.username);
     }
     return {
       props: {
@@ -48,8 +49,6 @@ const Admin = ({ pageDataSS, linkDataSS, socialDataSS }) => {
   // console.log(pageDataSS);
 
   const updatedPageData = (data) => {
-    // console.log(data);
-    // save(data);
     setpageData(data);
   };
 

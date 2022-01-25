@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Link from 'next/link';
 import { useRouter } from "next/router";
 import styles from "../styles/login.module.css";
 import { useForm } from "react-hook-form";
@@ -121,13 +122,17 @@ const Admin = ({}) => {
                 )}
               </div>
 
-              <button
-                type="submit"
-                id="submit"
-                className="btn btn-primary btn-block"
-                onClick={handleSubmit(login)}
-                disabled={loading}
-              >
+              <div className="mb-3">
+                  <button
+                      type="submit"
+                      id="submit"
+                      className="btn btn-primary btn-block"
+                      onClick={handleSubmit(login)}
+                      disabled={loading}
+                    >Login </button> 
+
+                   <div className={styles.class__signup}>Don't have Luxury Travel account?  <Link href="/signup"><a>Sign Up</a></Link>
+                   </div>
                 {loading && (
                   <span
                     className="spinner-border spinner-border-sm me-1"
@@ -135,8 +140,7 @@ const Admin = ({}) => {
                     aria-hidden="true"
                   ></span>
                 )}
-                Login
-              </button>
+               </div> 
             </form>
           </div>
         </div>
