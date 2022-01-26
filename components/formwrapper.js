@@ -20,7 +20,8 @@ const endpoint =
   process.env.NODE_ENV === "production" ? `` : "http://localhost:3000";
 
 function Formwrapper({ pageData, updatedPageData }) {
-  const PUBLICURL = process.env.NEXT_HOME_URL 
+   
+  const PUBLICURL = process.env.NODE_ENV === "production" 
   ? `https://${process.env.NEXT_HOME_URL}`
   : "http://localhost:3000";
   const bioLinkurl = `${PUBLICURL}/linkin/${pageData.username}`;
