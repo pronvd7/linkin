@@ -53,7 +53,7 @@ export default function Home({
 
   const VID_REGEX =/(?:youtube(?:-nocookie)?\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
 
-  const EmbedId =  isEmpty(youtubeUrl.match(VID_REGEX)) ? "nIh91a4JX3M" : youtubeUrl.match(VID_REGEX)[1];
+  const EmbedId = youtubeUrl ? isEmpty(youtubeUrl.match(VID_REGEX)) ? "nIh91a4JX3M" : youtubeUrl.match(VID_REGEX)[1] : "nIh91a4JX3M";
  
   return (
     <div>
