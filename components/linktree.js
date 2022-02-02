@@ -1,4 +1,6 @@
 import { isEmpty, isHex } from "../lib/side";
+import YoutubeEmbed from "./youtubeEmbed";
+import ReactGallery from "./reactGallery";
 // import Image from "next/image";
 
 export default function Home({
@@ -15,6 +17,7 @@ export default function Home({
   fontUrl,
   linkData,
   socialData,
+  mediaData,
   footerText,
   footerTextSize,
   footerBgColor,
@@ -26,6 +29,7 @@ export default function Home({
   linkPadding,
   linktreeWidth,
   preview = false,
+  youtubeUrl,
 }) {
   let linkPaddingLowWidth = isEmpty(linkPadding)
     ? "2em"
@@ -44,9 +48,13 @@ export default function Home({
   footerTextSize = isEmpty(footerTextSize) ? 12 : footerTextSize;
   footerBgColor = isEmpty(footerBgColor) ? "#000000ad" : footerBgColor;
   footerTextColor = isEmpty(footerTextColor) ? "#ffffff" : footerTextColor;
-  linkPadding = isEmpty(linkPadding) ? "1em" : `${linkPadding}em`;
+  linkPadding = isEmpty(linkPadding) ? ".5em" : `${linkPadding}em`;
   linktreeWidth = isEmpty(linktreeWidth) ? "320px" : `${linktreeWidth}px`;
 
+  const VID_REGEX =/(?:youtube(?:-nocookie)?\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
+
+  const EmbedId =  isEmpty(youtubeUrl.match(VID_REGEX)) ? "nIh91a4JX3M" : youtubeUrl.match(VID_REGEX)[1];
+ 
   return (
     <div>
       <div className="outterwrap">
@@ -68,6 +76,7 @@ export default function Home({
 
             <p className="handlerDescription">{handlerDescription}</p>
           </div>
+          
           <div className="social">
             <ul>
               {socialData.map((link, id) => {
@@ -121,13 +130,19 @@ export default function Home({
               })}
             </ul>
           </div>
-        </div>
-        {footerEnabled && (
+          { EmbedId && (
+            <YoutubeEmbed EmbedId={EmbedId} />)
+          }
+          { mediaData && (mediaData.length > 0) && (<ReactGallery mediaData={mediaData}/>)
+          }
+          </div>
+          {footerEnabled && (
           <div className="footer d-flex align-items-center justify-content-center">
             {/* Copyright © 2021 All Rights Reserved by. */}
             {footerText}
-          </div>
+            </div>
         )}
+      
       </div>
 
       <style
@@ -157,14 +172,18 @@ export default function Home({
         }
 
         .wrap {
-          min-height: ${footerEnabled ? "94vh" : "100vh"};
+          min-height: ${footerEnabled ? "140vh" : "100vh"};
           height: 100%;
           width: 100%;
           max-width: ${linktreeWidth};
-          padding: 0  1em 0 1em;
+          padding: 0  1em 30px 1em;
           margin: 0 auto;
+          position: relative;
+          display: table;
         }
-
+        .ReactGridGallery_tile {
+          padding-bottom: 15px!important;
+      }
         .handlerLink {
           text-decoration: dashed;
         }
@@ -181,10 +200,7 @@ export default function Home({
         }
 
         .footer {
-          // position: absolute;
-          right: 0;
-          // bottom: 0;
-          height: 4vh;
+          position:relative;
           ${preview ? "" : "left: 0 ; "}
           //padding: 1rem;
           background: ${footerBgColor};
@@ -192,7 +208,9 @@ export default function Home({
           text-align: center;
           color: ${footerTextColor};
           font-size: ${footerTextSize}px;
-          // width: ${preview ? "40%" : "100%"};
+          margin: 0 auto;
+          width:100%;
+          padding:10px 0;
         }
 
         a {
@@ -214,8 +232,8 @@ export default function Home({
 
         .avatar-pic {
           position: relative;
-          width: 200px;
-          height: 200px;
+          width: 150px;
+          height: 150px;
           margin: 20px auto;
           border: 1px solid #000;
           border-radius: 50%;

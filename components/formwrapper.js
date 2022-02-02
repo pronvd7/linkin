@@ -6,6 +6,7 @@ import styles from "../styles/formwrapper.module.css";
 import ColorForm from "./colorform";
 import LinksForm from "./linksform";
 import SocialForm from "./socialform";
+import Mediaform from "./mediaform";
 import GeneralForm from "./generalform";
 import FontForm from "./fontform";
 import FooterForm from "./footerform";
@@ -202,6 +203,17 @@ function Formwrapper({ pageData, updatedPageData }) {
               >
                 Social
               </button>{" "}
+              <button
+                type="button"
+                className={`btn btn-outline-primary ${
+                  activeForm === "mediaForm" ? "active" : ""
+                } `}
+                onClick={() => {
+                  setactiveForm("mediaForm");
+                }}
+              >
+                Media
+              </button>{" "}
               {/* <button
                 type="button"
                 className="btn btn-outline-primary"
@@ -243,6 +255,9 @@ function Formwrapper({ pageData, updatedPageData }) {
           {activeForm === "linksForm" && <LinksForm pagedataid={pageData.id} />}
           {activeForm === "socialForm" && (
             <SocialForm pagedataid={pageData.id} />
+          )}
+           {activeForm === "mediaForm" && (
+            <Mediaform pagedataid={pageData.id} />
           )}
           {activeForm === "passwordchangeform" && <PasswordChangeForm />}
         </div>

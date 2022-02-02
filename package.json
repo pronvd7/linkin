@@ -30,6 +30,7 @@
     "cookie": "^0.4.1",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
+    "formidable": "^2.0.1",
     "jose": "^1.28.0",
     "lodash.debounce": "^4.0.8",
     "next": "^12.0.4",
@@ -38,8 +39,11 @@
     "react": "^17.0.2",
     "react-beautiful-dnd": "^13.1.0",
     "react-dom": "^17.0.2",
+    "react-drag-drop-files": "^2.2.5",
+    "react-grid-gallery": "^0.5.5",
     "react-hook-form": "^7.4.2",
     "react-toastify": "^7.0.4",
+    "react-youtube": "^7.14.0",
     "sweetalert2": "^11.0.16",
     "yup": "^0.32.11"
   },
@@ -48,7 +52,7 @@
     "@testing-library/jest-dom": "^5.12.0",
     "@testing-library/react": "^11.2.7",
     "babel-jest": "^27.0.1",
-    "cloudinary": "^1.27.1",
+    "cloudinary": "^1.28.1",
     "jest": "^27.0.1",
     "prisma": "^3.7.0"
   }

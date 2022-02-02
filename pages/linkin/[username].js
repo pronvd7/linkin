@@ -15,13 +15,14 @@ export async function getServerSideProps({params}) {
         pageData: data.pageData,
         linkData: data.linkData,
         socialData: data.socialData,
+        mediaData : data.mediaData,
         username : params.username,
       },
     };
   }
 
 
-export default function Home({ pageData, linkData, socialData, username }) {
+export default function Home({ pageData, linkData, socialData, username, mediaData }) {
 
   return (
     <>
@@ -54,6 +55,7 @@ export default function Home({ pageData, linkData, socialData, username }) {
         {...pageData}
         linkData={linkData}
         socialData={socialData}
+        mediaData={mediaData}
       />
      </> 
      )}

@@ -20,6 +20,7 @@ export async function getServerSideProps({ req, res }) {
         pageDataSS: data.pageData,
         linkDataSS: data.linkData,
         socialDataSS: data.socialData,
+        mediaDataSS: data.mediaData,
       },
     };
   } catch (error) {
@@ -28,11 +29,11 @@ export async function getServerSideProps({ req, res }) {
   }
 }
 
-const Admin = ({ pageDataSS, linkDataSS, socialDataSS }) => {
+const Admin = ({ pageDataSS, linkDataSS, socialDataSS, mediaDataSS }) => {
+ 
   const [pageData, setpageData] = useState(pageDataSS);
 
-  const [{ links, socialLinks }, dispatch] = useStateValue();
-
+  const [{ links, socialLinks, mediaImages }, dispatch] = useStateValue();
   useEffect(() => {
     dispatch({
       type: "updateLink",
@@ -42,6 +43,10 @@ const Admin = ({ pageDataSS, linkDataSS, socialDataSS }) => {
     dispatch({
       type: "updateSocial",
       socialdata: socialDataSS,
+    });
+    dispatch({
+      type: "updateMedia",
+      mediadata: mediaDataSS,
     });
   }, []);
   // console.log(links);
@@ -69,13 +74,16 @@ const Admin = ({ pageDataSS, linkDataSS, socialDataSS }) => {
             {...pageData}
             linkData={links.filter((ele) => ele.displayText && ele.active)}
             socialData={socialLinks.filter((ele) => ele.linkUrl && ele.active)}
+            mediaData={mediaImages.filter((ele) => ele.imageUrl && ele.active)}
             preview
           />
         </div>
       </div>
       <style jsx>{`
         .preview {
-          width: 40vw;
+          overflow-y: scroll;
+          height: 100vh;
+          width: 50%;
         }
 
         @media (max-width: 768px) {
@@ -83,7 +91,7 @@ const Admin = ({ pageDataSS, linkDataSS, socialDataSS }) => {
             flex-direction: column;
           }
           .preview {
-            width: 100vw;
+            width: 50%;
           }
         }
       `}</style>

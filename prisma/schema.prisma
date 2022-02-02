@@ -64,8 +64,10 @@ model pagedata {
   linkPadding                 String?      @db.VarChar
   avatarBorderColor           String?      @db.VarChar
   linktreeWidth               String?      @db.VarChar
+  youtubeUrl                  String?      @db.VarChar
   users                       users        @relation(fields: [username], references: [username])
   linkdata                    linkdata[]
+  mediadata                   mediadata[]
   socialdata                  socialdata[]
 }
 
@@ -74,8 +76,21 @@ model users {
   username   String    @unique @db.VarChar(255)
   password   String    @db.VarChar(60)
   created_at DateTime? @default(now()) @db.Timestamptz(6)
+  updated_at DateTime? @default(now()) @db.Timestamptz(6)
   email      String    @unique @db.VarChar(255)
   isAdmin    Boolean   @default(false)
-  updated_at DateTime? @default(now()) @db.Timestamptz(6)
   pagedata   pagedata?
+}
+
+model mediadata {
+  id                   Int       @id @default(autoincrement())
+  pagedataid           Int?
+  imageUrl             String?   @db.VarChar
+  imageCaption         String?   @db.VarChar
+  imageDestinationUrl  String?   @db.VarChar
+  active               Boolean?  @default(true)
+  created_at           DateTime? @default(now()) @db.Timestamptz(6)
+  orderIndex           Int       @default(autoincrement())
+  cloudinary_public_id String?   @db.VarChar
+  pagedata             pagedata? @relation(fields: [pagedataid], references: [id])
 }
