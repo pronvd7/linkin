@@ -230,7 +230,7 @@ export default function Home({
           width:  ${avatarwidth}%;
         }
 
-        .avatar-pic {
+        .avatar-pic { 
           position: relative;
           width: 150px;
           height: 150px;
