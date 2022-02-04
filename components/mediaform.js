@@ -106,7 +106,7 @@ const MediaForm = ({ pagedataid }) => {
                 // if image need to insert new one 
                 payload.pagedataid= pagedataid;
             }
-            console.log(payload);
+
             try {
               const res = await fetch(`${endpoint}/api/media/upload`, {
                 method: 'POST',
