@@ -91,7 +91,7 @@ const MediaForm = ({ pagedataid }) => {
 
    const uploadImage = async (filedata, itemId) =>{
         setloading(true);
-
+        console.log(filedata);
     const formData = new FormData();
     formData.append('inputFile', filedata); 
 
@@ -103,7 +103,7 @@ const MediaForm = ({ pagedataid }) => {
           // if image need to insert new one 
          formData.append('pagedataid', pagedataid);
        }
-     
+       console.log(formData);
        try {
          const res = await fetch(`${endpoint}/api/media/upload`, {
            method: 'POST',

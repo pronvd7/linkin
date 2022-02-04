@@ -3,9 +3,9 @@ import { IncomingForm } from 'formidable';
 import { getMediaData, insertMediaImages, updateMediaImage } from "../../../lib/dbfuncprisma";
 
   cloudinary.config({ 
-    cloud_name: process.env.CLOUD_NAME, 
-    api_key: process.env.API_KEY, 
-    api_secret: process.env.API_SECRET 
+    cloud_name: 'steadycoder', 
+    api_key: '857866142349132', 
+    api_secret: 'PX8fduDFdk5ihX5OTdi1CnwSg7k' 
   });
   
 export const config = {
