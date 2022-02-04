@@ -45,7 +45,8 @@
     "react-toastify": "^7.0.4",
     "react-youtube": "^7.14.0",
     "sweetalert2": "^11.0.16",
-    "yup": "^0.32.11"
+    "yup": "^0.32.11",
+    "cloudinary": "^1.28.1"
   },
   "devDependencies": {
     "@testing-library/dom": "^7.31.0",

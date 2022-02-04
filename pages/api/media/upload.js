@@ -1,7 +1,5 @@
-import cloudinary from 'cloudinary';
-import { IncomingForm } from 'formidable';
 import { getMediaData, insertMediaImages, updateMediaImage } from "../../../lib/dbfuncprisma";
-
+const cloudinary = require('cloudinary');
   cloudinary.config({ 
     cloud_name: process.env.CLOUD_NAME, 
     api_key: process.env.API_KEY, 
@@ -10,12 +8,16 @@ import { getMediaData, insertMediaImages, updateMediaImage } from "../../../lib/
   
 
 export default async (req, res) => {
+  if (req.method !== "POST") {
+    res.status(400).send("method not allowed");
+    return;
+  }
  try {  
-
+  
    if(req.body.inputFile === 'undefined' || req.body.inputFile === null || req.body.inputFile === ""){
     return res.status(500).json({ success: false, message: "File is required!" });
    }
-   
+
     const file = req.body.inputFile;
     const response = await cloudinary.v2.uploader.upload(file, {
         resource_type: 'auto',
