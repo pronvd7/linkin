@@ -3,41 +3,30 @@ import { IncomingForm } from 'formidable';
 import { getMediaData, insertMediaImages, updateMediaImage } from "../../../lib/dbfuncprisma";
 
   cloudinary.config({ 
-    cloud_name: 'steadycoder', 
-    api_key: '857866142349132', 
-    api_secret: 'PX8fduDFdk5ihX5OTdi1CnwSg7k' 
+    cloud_name: process.env.CLOUD_NAME, 
+    api_key: process.env.API_KEY, 
+    api_secret: process.env.API_SECRET 
   });
   
-export const config = {
-  api: {
-    bodyParser: false,
-  },
-};
 
 export default async (req, res) => {
  try {  
-    const data = await new Promise((resolve, reject) => {
-        const form = new IncomingForm();
 
-        form.parse(req, (err, fields, files) => {
-        if (err) return reject(err);
-        resolve({ fields, files });
-        });
-    });
-
-    const file = data?.files?.inputFile.filepath;
-    const fields = data?.fields;
-
+   if(req.body.inputFile === 'undefined' || req.body.inputFile === null || req.body.inputFile === ""){
+    return res.status(500).json({ success: false, message: "File is required!" });
+   }
+   
+    const file = req.body.inputFile;
     const response = await cloudinary.v2.uploader.upload(file, {
         resource_type: 'auto',
     });
    
 
-    if(fields.id !== 'undefined' && fields.id){
+    if(req.body.id !== 'undefined' &&  req.body.id){
         //need to update
         const payload = {
-                id: parseInt(fields.id, 10),
-                pagedataid: parseInt(fields.pagedataid, 10),
+                id: parseInt( req.body.id, 10),
+                pagedataid: parseInt(req.body.pagedataid, 10),
                 imageUrl: response.secure_url,
                 cloudinary_public_id : response.public_id,
             }
@@ -45,14 +34,14 @@ export default async (req, res) => {
     }else{
         // need to insert
         const payload = {
-            pagedataid: parseInt(fields.pagedataid, 10),
+            pagedataid: parseInt(req.body.pagedataid, 10),
             imageUrl: response.secure_url,
             cloudinary_public_id : response.public_id,
         }
         await insertMediaImages(payload);
     }
 
-    let updatedMediaData = await getMediaData(parseInt(fields.pagedataid, 10));
+    let updatedMediaData = await getMediaData(parseInt(req.body.pagedataid, 10));
     return res.json({
         success: true,
         updatedMediaData: updatedMediaData.mediaData,
