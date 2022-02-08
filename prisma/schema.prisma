@@ -65,6 +65,8 @@ model pagedata {
   avatarBorderColor           String?      @db.VarChar
   linktreeWidth               String?      @db.VarChar
   youtubeUrl                  String?      @db.VarChar
+  googleAnalytic              String?      @db.VarChar
+  facebookPixel              String?      @db.VarChar
   users                       users        @relation(fields: [username], references: [username])
   linkdata                    linkdata[]
   mediadata                   mediadata[]

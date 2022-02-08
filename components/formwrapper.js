@@ -9,6 +9,7 @@ import SocialForm from "./socialform";
 import Mediaform from "./mediaform";
 import GeneralForm from "./generalform";
 import FontForm from "./fontform";
+import PixelTracking from "./pixeltracking";
 import FooterForm from "./footerform";
 import PasswordChangeForm from "./passwordchangeform";
 
@@ -43,6 +44,7 @@ function Formwrapper({ pageData, updatedPageData }) {
 
   const savePageData = async (data) => {
     setloading(true);
+    console.log(data);
     try {
 
       let res = await fetch(`${endpoint}/api/updatepagedata`, {
@@ -184,6 +186,17 @@ function Formwrapper({ pageData, updatedPageData }) {
               <button
                 type="button"
                 className={`btn btn-outline-primary ${
+                  activeForm === "PixelTracking" ? "active" : ""
+                } `}
+                onClick={() => {
+                  setactiveForm("PixelTracking");
+                }}
+              >
+                Tracking Pixel
+              </button>{" "}
+              <button
+                type="button"
+                className={`btn btn-outline-primary ${
                   activeForm === "linksForm" ? "active" : ""
                 } `}
                 onClick={() => {
@@ -251,6 +264,9 @@ function Formwrapper({ pageData, updatedPageData }) {
           )}{" "}
           {activeForm === "fontForm" && (
             <FontForm data={pageData} update={savePageData} loading={loading} />
+          )}
+           {activeForm === "PixelTracking" && (
+            <PixelTracking data={pageData} update={savePageData} loading={loading} />
           )}
           {activeForm === "linksForm" && <LinksForm pagedataid={pageData.id} />}
           {activeForm === "socialForm" && (
