@@ -17,23 +17,48 @@ const PixelTracking = ({ data, update, loading }) => {
         >
           <form onSubmit={(e) => e.preventDefault()}>
             <h3>Pixel Tracking</h3>
-          
-            <div className="mb-3">
-              <label className="form-label">Facebook Pixel</label>
-              <textarea
-                className="form-control"
-                rows="3"
-                {...register("facebookPixel")}
-              ></textarea>
+            <div className="mb-3 ">
+              <label className="form-label">Facebook Pixel Id</label>
+              <div className="input-group mb-3">
+                <input
+                  type="text"
+                  className={
+                    errors.facebookPixel
+                      ? "form-control is-invalid"
+                      : "form-control"
+                  }
+                  placeholder="Enter Facebook Pixel Id"
+                  {...register("facebookPixel")}
+                />
+                {errors.facebookPixel && (
+                  <div className="invalid-feedback">
+                    {errors.facebookPixel.message}
+                  </div>
+                )}
+              </div>
             </div>{" "}
-            <div className="mb-3">
-              <label className="form-label">Google Analytic</label>
-              <textarea
-                className="form-control"
-                rows="3"
-                {...register("googleAnalytic")}
-              ></textarea>
+            <div className="mb-3 ">
+              <label className="form-label">Google Tag Manager</label>
+              <div className="input-group mb-3">
+                <input
+                  type="text"
+                  className={
+                    errors.googleAnalytic
+                      ? "form-control is-invalid"
+                      : "form-control"
+                  }
+                  placeholder="Enter GTM Id"
+                  {...register("googleAnalytic")}
+                />
+
+                {errors.googleAnalytic && (
+                  <div className="invalid-feedback">
+                    {errors.googleAnalytic.message}
+                  </div>
+                )}
+              </div>
             </div>{" "}
+           
             <button
               type="submit"
               className="btn btn-primary btn-block"

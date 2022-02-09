@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
 import LinkinTheBioPage from "../../components/linktree";
+import {Facebookpixel, GoogleTagManager } from "../../components/trackingcode";
 import { getPageDatawLinkAndSocialData } from "../../lib/dbfuncprisma";
 
 export async function getServerSideProps({params}) {
@@ -23,7 +24,7 @@ export async function getServerSideProps({params}) {
 
 
 export default function Home({ pageData, linkData, socialData, username, mediaData }) {
-
+    console.log(pageData);
   return (
     <>
     { (pageData.username !== username)  ? (
@@ -49,6 +50,9 @@ export default function Home({ pageData, linkData, socialData, username, mediaDa
           content={`${pageData.handlerText}'s Link tree Page`}
         />
         <meta name="og:image" content={pageData.avatarUrl} />
+ 
+        {pageData.facebookPixel && <Facebookpixel  pixelId={pageData.facebookPixel}/>} 
+        {pageData.googleAnalytic && <GoogleTagManager  gtmId={pageData.googleAnalytic}/>} 
       </Head>
 
       <LinkinTheBioPage
