@@ -39,12 +39,17 @@ export default function ReactGallery({mediaData}){
                 if(imageDestinationUrl){
                 window.open(imageDestinationUrl);
                 }
-                return true;
+                return true; 
         }
       
         return (
             <div> 
-              { IMAGES && (<Gallery images={IMAGES} enableImageSelection={false} enableLightbox={false} onClickThumbnail={destinationUrl}/>) }
+              { IMAGES && (<div style={{
+                    display: "block",
+                    minHeight: "1px",
+                    width: "100%",
+                    border: "1px solid #ddd",
+                    overflow: "auto"}}><Gallery images={IMAGES} enableImageSelection={false} enableLightbox={false} onClickThumbnail={destinationUrl}/></div>) }
             </div>   
         );
 

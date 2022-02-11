@@ -130,8 +130,10 @@ export default function Home({
               })}
             </ul>
           </div>
-          { EmbedId && (
-            <YoutubeEmbed EmbedId={EmbedId} />)
+        { EmbedId && (
+          <div className="youtube-video-class">  
+            <YoutubeEmbed EmbedId={EmbedId} />
+          </div>)  
           }
           { mediaData && (mediaData.length > 0) && (<ReactGallery mediaData={mediaData}/>)
           }
@@ -170,7 +172,7 @@ export default function Home({
           ${bgImgUrl ? `background-position: center;` : ""}
           ${bgImgUrl ? `background-size: cover;` : ""}
         }
-
+     
         .wrap {
           min-height: ${footerEnabled ? "140vh" : "100vh"};
           height: 100%;
@@ -314,12 +316,23 @@ export default function Home({
         .single_icon {
           font-size: 2rem;
         }
+        .youtube-video-class{
+          max-width:100%;
+        }
 
+        .ReactGridGallery_tile-viewport {
+          outline: 2px solid #766d6d;
+          outline-offset: -8px;
+       }
         @media (max-width: 768px) {
           .link {
-            padding : ${linkPaddingLowWidth};
+            padding: 1em;
             // padding: 1.2rem;
           }
+          .avatar-pic {
+            width: 120px;
+             height: 120px;
+         }
       `}</style>
     </div>
   );

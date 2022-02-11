@@ -1,5 +1,4 @@
 import Head from "next/head";
-import { useRouter } from "next/router";
 import LinkinTheBioPage from "../../components/linktree";
 import {Facebookpixel, GoogleTagManager } from "../../components/trackingcode";
 import { getPageDatawLinkAndSocialData } from "../../lib/dbfuncprisma";
@@ -24,7 +23,6 @@ export async function getServerSideProps({params}) {
 
 
 export default function Home({ pageData, linkData, socialData, username, mediaData }) {
-    console.log(pageData);
   return (
     <>
     { (pageData.username !== username)  ? (
