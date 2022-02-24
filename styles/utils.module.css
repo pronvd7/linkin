@@ -55,6 +55,33 @@
   position: relative;
   padding-left: 1.25em;
 }
+
+.prioritize_animate label {
+  float: left;
+  margin: 5px;
+  padding: 5px;
+  color: #3c6efd;
+  background-color: #ffffff;
+  font-size: 16px;
+  text-align: center;
+  display: block;
+  cursor: pointer;
+  border: 2px solid #ced4da;
+  border-radius: 10px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.prioritize_animate input:checked + label{
+border: 3px solid #ced4da;
+background-color: #e7f1ff;
+}
+
+.prioritize_animate input{
+display: none;
+}
+
 .boxshadowmenu:before {
   content: "";
   position: absolute;

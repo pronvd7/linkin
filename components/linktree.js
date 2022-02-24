@@ -1,6 +1,7 @@
 import { isEmpty, isHex } from "../lib/side";
 import YoutubeEmbed from "./youtubeEmbed";
 import ReactGallery from "./reactGallery";
+import styles from "../styles/animatelink.module.css";
 // import Image from "next/image";
 
 export default function Home({
@@ -107,7 +108,7 @@ export default function Home({
             <ul>
               {linkData.map((link, id) => {
                 return (
-                  <li key={id}>
+                  <li className={`${styles[link.linkEffect]} linklist`} key={id}>
                     <a
                       href={`${link.linkUrl || "#"}`}
                       className="link"
@@ -319,7 +320,7 @@ export default function Home({
         .youtube-video-class{
           max-width:100%;
         }
-
+        
         .ReactGridGallery_tile-viewport {
           outline: 2px solid #766d6d;
           outline-offset: -8px;

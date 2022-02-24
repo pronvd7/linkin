@@ -64,6 +64,7 @@ async function seed() {
             displayText: "Welcome to Luxury Travel Hackers",
             iconClass: "fas fa-link",
             linkUrl: "",
+            linkEffect: "None",
           },
         },
         socialdata: {

@@ -196,6 +196,17 @@ export default function LinkCard({
                       )}
                     </div>
                   </div>
+                 <div className={`${styles.prioritize_animate} row`}> 
+                    <h5>Prioritize Link:</h5>
+                    <p>Draw attention to your most important link.</p>
+                    <div className="">
+                    <input  {...register("linkEffect")} type="radio" name="linkEffect" id={`${item.id}_None`} value="None" checked={item.linkEffect === 'None'} /><label for={`${item.id}_None`}>None</label>
+                    <input  {...register("linkEffect")} type="radio" name="linkEffect" id={`${item.id}_Grow`} value="hvr-grow" checked={item.linkEffect === 'hvr-grow'} /><label for={`${item.id}_Grow`}>Grow</label>
+                    <input  {...register("linkEffect")} type="radio" name="linkEffect" id={`${item.id}_Shrink`} value="hvr-shrink" checked={item.linkEffect === 'hvr-shrink'} /><label for={`${item.id}_Shrink`}>Shrink</label>
+                    <input {...register("linkEffect")} type="radio" name="linkEffect" id={`${item.id}_Wobble`} value="hvr-wobble-vertical" checked={item.linkEffect === 'hvr-wobble-vertical'} /><label for={`${item.id}_Wobble`}>Wobble</label>
+                    <input {...register("linkEffect")} type="radio" name="linkEffect" id={`${item.id}_Buzz`} value="hvr-buzz" checked={item.linkEffect === 'hvr-buzz'} /><label for={`${item.id}_Buzz`}>Buzz</label>
+                    </div>
+                  </div> 
                   <div className="row">
                     <div className="col">
                       <div className="mb-1 small ">
