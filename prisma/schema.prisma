@@ -38,6 +38,19 @@ model socialdata {
   pagedata     pagedata? @relation(fields: [pagedataid], references: [id])
 }
 
+model notificationsdata {
+  id           Int       @id @default(autoincrement())
+  pagedataid   Int?
+  notiTitle    String?   @db.VarChar
+  notiMessage  String?   @db.VarChar
+  notiType     String?   @db.VarChar
+  timeInterval String?   @db.VarChar
+  active       Boolean?  @default(true)
+  created_at   DateTime? @default(now()) @db.Timestamptz(6)
+  orderIndex   Int       @default(autoincrement())
+  pagedata     pagedata? @relation(fields: [pagedataid], references: [id])
+}
+
 model pagedata {
   id                          Int          @id @default(autoincrement())
   username                    String       @unique @db.VarChar(255)
@@ -72,6 +85,7 @@ model pagedata {
   linkdata                    linkdata[]
   mediadata                   mediadata[]
   socialdata                  socialdata[]
+  notificationsdata           notificationsdata[]
 }
 
 model users {

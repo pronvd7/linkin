@@ -21,6 +21,7 @@ export async function getServerSideProps({ req, res }) {
         linkDataSS: data.linkData,
         socialDataSS: data.socialData,
         mediaDataSS: data.mediaData,
+        notificationsDataSS: data.notificationsData,
       },
     };
   } catch (error) {
@@ -29,11 +30,11 @@ export async function getServerSideProps({ req, res }) {
   }
 }
 
-const Admin = ({ pageDataSS, linkDataSS, socialDataSS, mediaDataSS }) => {
+const Admin = ({ pageDataSS, linkDataSS, socialDataSS, mediaDataSS, notificationsDataSS }) => {
  
   const [pageData, setpageData] = useState(pageDataSS);
 
-  const [{ links, socialLinks, mediaImages }, dispatch] = useStateValue();
+  const [{ links, socialLinks, mediaImages, notifications }, dispatch] = useStateValue();
   useEffect(() => {
     dispatch({
       type: "updateLink",
@@ -48,10 +49,14 @@ const Admin = ({ pageDataSS, linkDataSS, socialDataSS, mediaDataSS }) => {
       type: "updateMedia",
       mediadata: mediaDataSS,
     });
+
+    dispatch({
+      type: "updateNotification",
+      notificationsdata: notificationsDataSS,
+    });
   }, []);
   // console.log(links);
-
-  // console.log(pageDataSS);
+  
 
   const updatedPageData = (data) => {
     setpageData(data);
@@ -75,6 +80,7 @@ const Admin = ({ pageDataSS, linkDataSS, socialDataSS, mediaDataSS }) => {
             linkData={links.filter((ele) => ele.displayText && ele.active)}
             socialData={socialLinks.filter((ele) => ele.linkUrl && ele.active)}
             mediaData={mediaImages.filter((ele) => ele.imageUrl && ele.active)}
+            notifications={notifications.filter((ele) => ele.notiMessage && ele.active)}
             preview
           />
         </div>

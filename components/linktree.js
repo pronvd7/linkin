@@ -2,6 +2,7 @@ import { isEmpty, isHex } from "../lib/side";
 import YoutubeEmbed from "./youtubeEmbed";
 import ReactGallery from "./reactGallery";
 import styles from "../styles/animatelink.module.css";
+import { ToastContainer, toast } from "react-toastify";
 // import Image from "next/image";
 
 export default function Home({
@@ -31,6 +32,7 @@ export default function Home({
   linktreeWidth,
   preview = false,
   youtubeUrl,
+  notificationsData,
 }) {
   let linkPaddingLowWidth = isEmpty(linkPadding)
     ? "2em"
@@ -55,7 +57,34 @@ export default function Home({
   const VID_REGEX =/(?:youtube(?:-nocookie)?\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
 
   const EmbedId = youtubeUrl ? isEmpty(youtubeUrl.match(VID_REGEX)) ? "nIh91a4JX3M" : youtubeUrl.match(VID_REGEX)[1] : "nIh91a4JX3M";
- 
+
+  if (Array. isArray(notificationsData) && notificationsData. length) {
+    notificationsData.map((notification, id) => {
+      if (notification.notiType === "success") {
+        toast.success(notification.notiMessage, { delay: notification.timeInterval * 1000  });
+        return;
+      }
+
+      if (notification.notiType === "error") {
+        toast.error(notification.notiMessage, { delay: notification.timeInterval * 1000  });
+        return;
+      }
+
+      if (notification.notiType === "info") {
+        toast.info(notification.notiMessage, { delay: notification.timeInterval * 1000  });
+        return;
+      }
+
+      if (notification.notiType === "warning") {
+        toast.warn(notification.notiMessage, { delay: notification.timeInterval * 1000  });
+        return;
+      }
+
+      toast(notification.notiMessage, { delay: notification.timeInterval * 1000  });
+      return;
+     })
+  }
+  
   return (
     <div>
       <div className="outterwrap">
@@ -139,6 +168,17 @@ export default function Home({
           { mediaData && (mediaData.length > 0) && (<ReactGallery mediaData={mediaData}/>)
           }
           </div>
+
+        <ToastContainer
+          position="bottom-left"
+          hideProgressBar={true}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
           {footerEnabled && (
           <div className="footer d-flex align-items-center justify-content-center">
             {/* Copyright © 2021 All Rights Reserved by. */}

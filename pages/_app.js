@@ -9,6 +9,7 @@ export default function App({ Component, pageProps }) {
     links: [],
     socialLinks: [],
     mediaImages: [],
+    notifications: [],
   };
   
   const reducer = (state, action) => {
@@ -31,7 +32,13 @@ export default function App({ Component, pageProps }) {
             ...state,
             mediaImages: action.mediadata,
           };
-  
+
+      case "updateNotification":
+        return {
+          ...state,
+          notifications: action.notificationsdata,
+        };
+
       case "deleteLink":
         // console.log(state.links.filter((ele) => ele.id != action.id));
         return {
@@ -50,6 +57,12 @@ export default function App({ Component, pageProps }) {
             ...state,
             mediaImages: state.mediaImages.filter((ele) => ele.id != action.id),
           };
+
+      case "deleteNotification":
+        return {
+          ...state,
+          notifications: state.notifications.filter((ele) => ele.id != action.id),
+        };
       default:
         return state;
     }

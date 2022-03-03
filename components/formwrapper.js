@@ -7,6 +7,7 @@ import ColorForm from "./colorform";
 import LinksForm from "./linksform";
 import SocialForm from "./socialform";
 import Mediaform from "./mediaform";
+import Notifications from "./notificationsform";
 import GeneralForm from "./generalform";
 import FontForm from "./fontform";
 import PixelTracking from "./pixeltracking";
@@ -227,6 +228,17 @@ function Formwrapper({ pageData, updatedPageData }) {
               >
                 Media
               </button>{" "}
+              <button
+                type="button"
+                className={`btn btn-outline-primary ${
+                  activeForm === "notificationsForm" ? "active" : ""
+                } `}
+                onClick={() => {
+                  setactiveForm("notificationsForm");
+                }}
+              >
+                Alerts
+              </button>{" "}
               {/* <button
                 type="button"
                 className="btn btn-outline-primary"
@@ -274,6 +286,9 @@ function Formwrapper({ pageData, updatedPageData }) {
           )}
            {activeForm === "mediaForm" && (
             <Mediaform pagedataid={pageData.id} />
+          )}
+          {activeForm === "notificationsForm" && (
+            <Notifications pagedataid={pageData.id} />
           )}
           {activeForm === "passwordchangeform" && <PasswordChangeForm />}
         </div>
